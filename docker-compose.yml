@@ -20,7 +20,7 @@ services:
     environment:
       DATABASE_URL: postgresql+asyncpg://shop:shop@db:5432/shoplite
     command: >
-      sh -c "python scripts/seed.py &&
+      sh -c "python -m scripts.seed &&
              uvicorn app.main:app --host 0.0.0.0 --port 8000"
     depends_on:
       db:
