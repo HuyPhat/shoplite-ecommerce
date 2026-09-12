@@ -1,0 +1,43 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# next
+.next/
+out/
+next-env.d.ts
+
+# env
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# build artifacts
+dist/
+build/
+coverage/
+
+# playwright
+test-results/
+playwright-report/
+blob-report/
+
+# misc
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# codegraph
+.codegraph/
+
+# opencode runtime state
+.opencode/state/

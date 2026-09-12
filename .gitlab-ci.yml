@@ -1,0 +1,57 @@
+stages:
+  - test
+  - build
+
+default:
+  interruptible: true
+
+frontend-test:
+  stage: test
+  image: node:22-alpine
+  before_script:
+    - corepack enable
+    - cd frontend
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm lint
+    - pnpm typecheck
+    - pnpm test
+  cache:
+    key:
+      files:
+        - frontend/pnpm-lock.yaml
+    paths:
+      - frontend/node_modules/
+
+backend-test:
+  stage: test
+  image: python:3.12-slim
+  before_script:
+    - cd backend
+    - pip install -r requirements.txt
+  script:
+    - pytest
+
+frontend-build:
+  stage: build
+  image: node:22-alpine
+  before_script:
+    - corepack enable
+    - cd frontend
+    - pnpm install --frozen-lockfile
+  script:
+    - pnpm build
+  cache:
+    key:
+      files:
+        - frontend/pnpm-lock.yaml
+    paths:
+      - frontend/node_modules/
+
+backend-build:
+  stage: build
+  image: docker:27
+  services:
+    - docker:27-dind
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE/api:$CI_COMMIT_SHA ./backend
