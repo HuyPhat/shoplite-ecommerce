@@ -12,6 +12,7 @@ fidelity.
 - [`docs/DESIGN_SYSTEM.md`](docs/DESIGN_SYSTEM.md) — tokens extracted from Figma + component specs
 - [`docs/PROJECT_REQUIREMENTS.md`](docs/PROJECT_REQUIREMENTS.md) — functional/NFR scope, API contract, data model
 - [`docs/design/screens/`](docs/design/screens) — reference renders
+- [`docs/DEPLOY.md`](docs/DEPLOY.md) — free-tier deploy guide (Neon + Render + Vercel)
 - [`.opencode/skills/figma-to-nextjs-tailwind.md`](.opencode/skills/figma-to-nextjs-tailwind.md) — codegen rules
 
 ## Development

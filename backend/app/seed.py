@@ -1,3 +1,4 @@
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app import models
@@ -47,6 +48,10 @@ def _image(slug: str, i: int) -> dict:
 
 
 async def seed(session: AsyncSession) -> None:
+    existing = await session.scalar(select(models.Category.id).limit(1))
+    if existing is not None:
+        return
+
     for c in CATEGORIES:
         session.add(models.Category(**c))
 
