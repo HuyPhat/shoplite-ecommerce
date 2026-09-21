@@ -3,6 +3,7 @@
 import { Mail } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { BASE_PATH } from "@/lib/basePath";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ export function Newsletter() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    await fetch("/api/newsletter", {
+    await fetch(`${BASE_PATH}/api/newsletter`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),

@@ -1,8 +1,9 @@
 import { delay, http, HttpResponse } from "msw";
+import { BASE_PATH } from "@/lib/basePath";
 import type { ProductFilters } from "@/lib/types";
 import { categories, products, reviews } from "./db";
 
-const API = "/api";
+const API = `${BASE_PATH}/api`;
 
 export const handlers = [
   http.get(`${API}/categories`, async () => {

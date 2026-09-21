@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { BASE_PATH } from "./basePath";
 import type {
   Category,
   Order,
@@ -10,7 +11,7 @@ import type {
 } from "./types";
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(path);
+  const res = await fetch(`${BASE_PATH}${path}`);
   if (!res.ok) throw new Error(`Request failed: ${res.status}`);
   return res.json();
 }
@@ -69,7 +70,7 @@ export function useRelated(slug: string) {
 }
 
 export async function placeOrder(payload: OrderPayload): Promise<Order> {
-  const res = await fetch("/api/orders", {
+  const res = await fetch(`${BASE_PATH}/api/orders`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState, type ReactNode } from "react";
+import { BASE_PATH } from "@/lib/basePath";
 import { isMockEnabled } from "@/mocks";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -18,7 +19,10 @@ export function Providers({ children }: { children: ReactNode }) {
     let mounted = true;
     import("@/mocks/browser")
       .then(({ worker }) =>
-        worker.start({ onUnhandledRequest: "bypass" }),
+        worker.start({
+          onUnhandledRequest: "bypass",
+          serviceWorker: { url: `${BASE_PATH}/mockServiceWorker.js` },
+        }),
       )
       .then(() => {
         if (mounted) setReady(true);
