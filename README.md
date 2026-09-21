@@ -3,6 +3,10 @@
 A full-stack e-commerce storefront reproducing the **SHOP.CO** Figma template with high design-token
 fidelity.
 
+**Live demo (static UI, mock data):** https://huyphat.github.io/shoplite-ecommerce/
+Auto-deployed from `main` via [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
+No backend behind it — see [`docs/DEPLOY.md`](docs/DEPLOY.md) for a real full-stack deploy.
+
 - **Frontend** — Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · React Query + Zustand · MSW (mock-first)
 - **Backend** — FastAPI · Pydantic v2 · SQLAlchemy 2.0 (async) · PostgreSQL · Alembic
 - **Infra** — Docker Compose · GitLab CI
